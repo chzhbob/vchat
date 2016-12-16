@@ -1,26 +1,27 @@
 <template>
-    <section class="form">
-        <section class="form-header">
-            <p></p><p></p><p></p><p></p><p></p><p></p>
-        </section>
-        <h1>登陆</h1>
-        <section class="form-input">
-            <input type="text" placeholder="用户名" />
-            <input type="password" placeholder="密码" />
-
-            <section class="form-control clearfix">
-                <label>
-                    <input type="checkbox" />记住我
-                </label>
-                <button>确定</button>
+    <section class="wrapper">
+        <section class="form">
+            <section class="form-header">
+                <p></p><p></p><p></p><p></p><p></p><p></p>
             </section>
-            
+            <h1>登陆</h1>
+            <section class="form-input">
+                <input type="text" placeholder="用户名" />
+                <input type="password" placeholder="密码" />
+
+                <section class="form-control clearfix">
+                    <label>
+                        <input type="checkbox" />记住我
+                    </label>
+                    <button>确定</button>
+                </section>
+                
+            </section>
+            <section class="forget">
+                忘记密码？
+            </section>
         </section>
-        <section class="forget">
-            忘记密码？
-        </section>
-    </section>
-    
+    </section>    
 </template>
 
 <script>
@@ -40,10 +41,15 @@ h1{
     color: #3d4246;
     line-height: 70px;
 }
-.form{
+.wrapper{
     position: absolute;
     top: 50%;
     left: 50%;
+}
+.form{
+    position: relative;
+    top: -138.5px;
+    left: -160px;
     width: 320px;
     margin: 0 auto;
     padding-top: 20px;
