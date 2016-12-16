@@ -40,6 +40,7 @@ h1{
     font-size: 18px;
     color: #3d4246;
     line-height: 70px;
+    font-weight: bold;
 }
 .wrapper{
     position: absolute;
@@ -48,11 +49,11 @@ h1{
 }
 .form{
     position: relative;
-    top: -138.5px;
+    top: -133.5px;
     left: -160px;
     width: 320px;
     margin: 0 auto;
-    padding-top: 20px;
+    padding-top: 10px;
     background: white;
     border: 1px solid #bbb;
     border-top: none;
@@ -101,6 +102,7 @@ h1{
 }
 .form-input input[type="text"],
 .form-input input[type="password"]{
+    font-size: 14px;
     margin-bottom: 10px;
     display: block;
     width: 100%;
@@ -112,6 +114,7 @@ h1{
     padding: 0 8px;
     font-family: '微软雅黑';
     box-shadow: inset 1px 1px 2px rgba(176,176,176,0.5);
+    outline: 0;
 }
 
 
@@ -124,6 +127,7 @@ h1{
     font-size: 12px;
     color: #2e2f30;
     background: #f7f7f7;
+    box-shadow: inset 0px 1px 10px rgba(221,221,221,0.5);
 }
 
 .form-control{
@@ -142,15 +146,17 @@ h1{
 .form-control button{
     float: right;
     width: 106px;
-    height: 34px;
+    height: 36px;
     line-height: 32px;
     font-size: 14px;
-    border-radius: 3px;
-    background-color: #00b89c;
+    border-radius: 5px;
+    background-color: #5cb85c;
     border-width: 0;
     color: #fff;
+    outline: 0;
 }
 .form-control button:active{
+    background-color: #449d44;
     box-shadow: inset 0 1px 2px hsla(0,0%,4%,.2);
 }
 </style>
