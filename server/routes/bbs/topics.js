@@ -1,11 +1,21 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
+let topics = require("../../entities/topics");
+let topicCategories = require("../../entities/topicCategories");
 
-var topics = require("../../entities/topics");
+router.get('/hot', (req, res, next) => {
+	topics.getByPage(req.query.page, req.query.ps).then(topics => res.jsonp({code: 0, topics}));
+});
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-	topics.getByPage(1, 10).then( result => res.jsonp({code: 0, data: result}) );
+router.get('/categories', (req, res, next) => {
+	topicCategories.all().then(categories => res.jsonp({code: 0, categories}));
+});
+
+router.get('/category/:cid', (req, res, next) => {
+	topics.getByPage(req.query.page, req.query.ps, req.params.cid).then(
+		topics => res.jsonp({code: 0, topics}),
+		err => res.jsonp({code: 1}
+	));
 });
 
 module.exports = router;

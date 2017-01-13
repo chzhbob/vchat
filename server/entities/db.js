@@ -1,6 +1,6 @@
-var mysql = require('mysql');
+let mysql = require('mysql');
 
-var mysqlConfig = {
+const mysqlConfig = {
 	host     : 'localhost',
 	user     : 'root',
 	password : '',
@@ -9,7 +9,7 @@ var mysqlConfig = {
 
 exports.query = (str, callback) => {
 	return new Promise( (resolve, reject) => {
-        var connection = mysql.createConnection(mysqlConfig);
+        let connection = mysql.createConnection(mysqlConfig);
 		connection.connect();
 		connection.query(str, (err, rows, fields) => {
 			connection.end();
