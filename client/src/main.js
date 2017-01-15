@@ -1,16 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Main from './Main.vue'
 import App from './App.vue'
-
+import Admin from './components/Admin.vue'
+import List from './components/List.vue'
 
 import '../static/core.css'
+import '../static/fonts/styles.css'
 
 Vue.use(VueRouter);
 
 const routes = [
-	{ path: '/admin', component: App }
+	{ path: '/admin', component: Admin },
+	{ path: '/List', component: List }
 ]
 
 const router = new VueRouter({
@@ -21,6 +23,6 @@ const router = new VueRouter({
 new Vue({
   el: '#app',
   router: router,
-  template: '<Main/>',
-  components: { Main }
+  template: '<App/>',
+  components: { App }
 })
