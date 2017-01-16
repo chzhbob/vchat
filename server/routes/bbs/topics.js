@@ -18,4 +18,11 @@ router.get('/category/:cid', (req, res, next) => {
 	));
 });
 
+router.get('/topic/:tid', (req, res, next) => {
+	topics.getById(req.params.tid).then(
+		topic => res.jsonp({code: 0, topic}),
+		err => res.jsonp({code: 1, msg: err}
+	));
+});
+
 module.exports = router;

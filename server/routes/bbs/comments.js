@@ -1,9 +1,12 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
+let comments = require("../../entities/comments");
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/topic/:tid', (req, res, next) => {
+	comments.getByTopicId(req.params.tid, req.query.page, req.query.pageSize).then(
+		comments => res.jsonp({code: 0, comments}),
+		err => res.jsonp({code: 1, msg: err}
+	));
 });
 
 module.exports = router;

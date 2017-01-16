@@ -14,3 +14,15 @@ exports.getByPage = (page = 1, pageSize = 20, category_id = 0) => {
 		LIMIT ${Number.parseInt((page - 1) * pageSize)},${Number.parseInt(pageSize)}
 	`);
 };
+
+exports.getById = (topic_id) => {
+
+	if(!validate.integer(topic_id)){
+		return Promise.reject([]);
+	}
+
+	return db.query(`
+		SELECT * FROM topics WHERE id = ${Number.parseInt(topic_id)} 
+		AND 'status' = ${db.TOPIC_STATUS.VALID}
+	`);
+}

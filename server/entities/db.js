@@ -1,15 +1,21 @@
 let mysql = require('mysql');
 
-const mysqlConfig = {
+const MYSQL_CONFIG = {
 	host     : 'localhost',
 	user     : 'root',
 	password : '',
 	database : 'vchat'
 }
 
+exports.TOPIC_STATUS = {
+	VALID : 0,
+	DRAFT : 1,
+	DELETE : 2
+}
+
 exports.query = (str, callback) => {
 	return new Promise( (resolve, reject) => {
-        let connection = mysql.createConnection(mysqlConfig);
+        let connection = mysql.createConnection(MYSQL_CONFIG);
 		connection.connect();
 		connection.query(str, (err, rows, fields) => {
 			connection.end();
