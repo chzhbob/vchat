@@ -22,6 +22,7 @@ DROP TABLE IF EXISTS `comments`;
 
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `topic_id` int(11) DEFAULT NULL,
   `content` text COLLATE utf8mb4_german2_ci,
   `agrees` int(11) DEFAULT NULL,
   `replies` int(11) DEFAULT NULL,
@@ -31,11 +32,7 @@ CREATE TABLE `comments` (
   `modified_by` int(11) DEFAULT NULL,
   `modified_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
-
-/*Data for the table `comments` */
-
-insert  into `comments`(`id`,`content`,`agrees`,`replies`,`created_by`,`created_name`,`created_at`,`modified_by`,`modified_at`) values (1,'i am comment No. 1',1,2,1,'admin','2017-01-12 14:52:50',NULL,NULL);
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
 
 /*Table structure for table `locations` */
 
@@ -49,8 +46,6 @@ CREATE TABLE `locations` (
   `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`,`users_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
-
-/*Data for the table `locations` */
 
 /*Table structure for table `replies` */
 
@@ -67,8 +62,6 @@ CREATE TABLE `replies` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
 
-/*Data for the table `replies` */
-
 /*Table structure for table `topic_categories` */
 
 DROP TABLE IF EXISTS `topic_categories`;
@@ -80,16 +73,13 @@ CREATE TABLE `topic_categories` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
 
-/*Data for the table `topic_categories` */
-
-insert  into `topic_categories`(`id`,`name`,`order`) values (1,'综合讨论区',1),(2,'吐槽反馈区',2),(3,'互助区',3);
-
 /*Table structure for table `topics` */
 
 DROP TABLE IF EXISTS `topics`;
 
 CREATE TABLE `topics` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `status` enum('0','1','2') COLLATE utf8mb4_german2_ci DEFAULT '0' COMMENT '0正常 1草稿 2删除',
   `category_id` int(11) DEFAULT NULL,
   `title` varchar(128) COLLATE utf8mb4_german2_ci DEFAULT NULL,
   `content` text COLLATE utf8mb4_german2_ci,
@@ -105,10 +95,6 @@ CREATE TABLE `topics` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
 
-/*Data for the table `topics` */
-
-insert  into `topics`(`id`,`category_id`,`title`,`content`,`views`,`comments`,`created_by`,`created_at`,`modified_by`,`modified_at`,`last_reply_by`,`last_reply_name`,`last_reply_at`) values (1,1,'hello world','why here',0,0,1,'2017-01-13 14:51:01',1,'2017-01-13 14:51:11',NULL,NULL,NULL);
-
 /*Table structure for table `users` */
 
 DROP TABLE IF EXISTS `users`;
@@ -122,10 +108,6 @@ CREATE TABLE `users` (
   `email` varchar(256) COLLATE utf8mb4_german2_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
-
-/*Data for the table `users` */
-
-insert  into `users`(`id`,`nickname`,`avatar`,`sign_up`,`last_sign_in`,`email`) values (1,'admin',NULL,NULL,NULL,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
