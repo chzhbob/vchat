@@ -10,7 +10,7 @@ export default {
 <template>
 	<li class="topic-item">
 		<section class="avatar">
-			<img src="~assets/demo/d.jpg" />
+			<img src="~assets/logo.png" />
 		</section>
 		<section class="detail">
 			<h2>Recently Purchased/ it thx!</h2>

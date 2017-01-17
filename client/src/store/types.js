@@ -1,0 +1,1 @@
+export const TOPICS_UPDATE = 'topics/UPDATE'
