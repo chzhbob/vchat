@@ -1,24 +1,23 @@
 <template>
 	<section class="wrapper">
 		<section class="right">
-			<Topics :topics="topics"></Topics>
+			<h1>{{topic.title}}</h1>
+			<section>{{ topic.content }}</section>
 		</section>
 	</section>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import Topics from './Topics.vue'
+
 export default {
-	name: 'topics',
-	components: {
-		Topics
-	},
+	name: 'topic',
+	
 	computed: mapGetters({
-		topics : 'topics'
+		topic : 'topic'
 	}),
 	created: function(){
-		this.$store.dispatch('getHotTopics');
+		this.$store.dispatch('getTopic', {topicId: this.$route.params.topicId});
 	}
 }
 </script>

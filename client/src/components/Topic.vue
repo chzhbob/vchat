@@ -1,24 +1,39 @@
 <script>
+import moment from 'moment'
+
 export default {
 	name: 'Topic',
 	props: {
 		topic: Object
+	},
+	computed: {
+		fromNow: function(){
+			moment.locale('zh-CN');
+			return this.topic.last_reply_at ? moment(this.topic.last_reply_at).fromNow() : '';
+		}
+	},
+
+	methods: {
+		nav: function(){
+			this.$router.push(`/topic/${this.topic.id}`);
+			
+		}
 	}
 }
 </script>
 
 <template>
-	<li class="topic-item">
+	<li class="topic-item" @click="nav">
 		<section class="avatar">
-			<img src="~assets/logo.png" />
+			<img :src="topic.avatar" />
 		</section>
 		<section class="detail">
-			<h2>Recently Purchased/ it thx!</h2>
-			<p><span>Katz</span> repliesd a day ago</p>
+			<h2>{{topic.title}}</h2>
+			<p><span>{{topic.last_reply_name}}</span> {{ fromNow }}</p>
 			<section class="controls">
 				<section class="comments">
 					<i class="v-comment-o"></i>
-					12
+					{{topic.comments}}
 				</section>
 			</section>
 		</section>

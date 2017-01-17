@@ -8,9 +8,10 @@ exports.getByPage = (page = 1, pageSize = 20, category_id = 0) => {
 	}
 
 	return db.query(`
-		SELECT * FROM topics 
-		${category_id == 0 ? `` : `WHERE category_id = ${Number.parseInt(category_id)}`} 
-		ORDER BY last_reply_at DESC 
+		SELECT * FROM topics t 
+		LEFT JOIN users u ON t.created_by = u.id 
+		${category_id == 0 ? `` : `WHERE t.category_id = ${Number.parseInt(category_id)}`} 
+		ORDER BY t.last_reply_at DESC 
 		LIMIT ${Number.parseInt((page - 1) * pageSize)},${Number.parseInt(pageSize)}
 	`);
 };
@@ -21,7 +22,7 @@ exports.getById = (topic_id) => {
 		return Promise.reject([]);
 	}
 
-	return db.query(`
+	return db.queryOne(`
 		SELECT * FROM topics WHERE id = ${Number.parseInt(topic_id)} 
 		AND 'status' = ${db.TOPIC_STATUS.VALID}
 	`);

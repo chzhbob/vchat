@@ -26,3 +26,17 @@ exports.query = (str, callback) => {
 		});
     });
 }
+
+exports.queryOne = (str, callback) => {
+	return new Promise( (resolve, reject) => {
+        let connection = mysql.createConnection(MYSQL_CONFIG);
+		connection.connect();
+		connection.query(str, (err, rows, fields) => {
+			connection.end();
+			if(err){
+				reject(err);
+			}
+			resolve(rows.length ? rows[0] : []);
+		});
+    });
+}

@@ -7,8 +7,12 @@ export default api;
 
 const domain_url = 'http://localhost:3000/api/'
 
-api.getTopics = function(guid){
-	return Vue.http.jsonp( domain_url + 'topics/hot', {
-		params : { guid: guid }
+api.getTopics = function(){
+	return Vue.http.jsonp( domain_url + 'topics/hot' );
+}
+
+api.getTopic = function(topicId, page = 1, ps = 20){
+	return Vue.http.jsonp( domain_url + `topics/topic/${topicId}`, {
+		params : { page, ps }
 	});
 }

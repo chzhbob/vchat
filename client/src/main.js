@@ -5,6 +5,7 @@ import App from './App.vue'
 import store from './store'
 import Admin from './components/Admin.vue'
 import List from './components/List.vue'
+import Topic from './components/detail/Topic.vue'
 
 import '../static/core.css'
 import '../static/fonts/styles.css'
@@ -14,7 +15,8 @@ Vue.use(VueRouter);
 
 const routes = [
 	{ path: '/admin', component: Admin },
-	{ path: '/list', component: List }
+	{ path: '/list', component: List },
+	{ path: '/topic/:topicId', component: Topic }
 ]
 
 const router = new VueRouter({
