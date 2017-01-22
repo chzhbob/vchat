@@ -16,3 +16,9 @@ api.getTopic = function(topicId, page = 1, ps = 20){
 		params : { page, ps }
 	});
 }
+
+api.getComments = function(topicId, page = 1, ps = 20){
+	return Vue.http.jsonp( domain_url + `comments/topic/${topicId}`, {
+		params : { page, ps }
+	});
+}

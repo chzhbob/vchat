@@ -1,5 +1,5 @@
 <script>
-import Topic from './Topic.vue'
+import Topic from './list/Topic.vue'
 export default {
 	name: 'Topics',
 	components: {

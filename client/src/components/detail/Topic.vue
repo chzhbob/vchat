@@ -4,18 +4,27 @@
 			<h1>{{topic.title}}</h1>
 			<section>{{ topic.content }}</section>
 		</section>
+		<Comments :topicId="$route.params.topicId"></Comments>
 	</section>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import Comments from '../Comments.vue'
 
 export default {
 	name: 'topic',
+
+	
 	
 	computed: mapGetters({
 		topic : 'topic'
 	}),
+
+	components: {
+		Comments
+	},
+
 	created: function(){
 		this.$store.dispatch('getTopic', {topicId: this.$route.params.topicId});
 	}
