@@ -25,4 +25,9 @@ router.get('/topic/:tid', (req, res, next) => {
 	));
 });
 
+router.get('/post', (req, res, next) => {
+	topics.post(req.query.content).then(result => res.jsonp({code: 0, topic: {id: result.insertId}}));
+	
+});
+
 module.exports = router;

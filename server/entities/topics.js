@@ -26,4 +26,8 @@ exports.getById = (topic_id) => {
 		SELECT * FROM topics WHERE id = ${Number.parseInt(topic_id)} 
 		AND 'status' = ${db.TOPIC_STATUS.VALID}
 	`);
-}
+};
+
+exports.post = (content) => {
+	return db.query("INSERT INTO topics(`category_id`, `title`, `content`, `created_by`, `created_at`) VALUES(1,'"+content+"','"+content+"',1,'2017-01-13 14:51:01');");
+};

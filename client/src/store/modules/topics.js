@@ -12,6 +12,11 @@ const getters = {
 const mutations = {
 	[types.TOPICS_UPDATE](state, payload){
 		state.items = payload.items;
+	},
+
+	[types.TOPIC_POST_BACK](state, payload){
+		state.items = payload.topic;
+		// state.items = [..state.items, payload.topic]
 	}
 }
 

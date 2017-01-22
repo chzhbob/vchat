@@ -22,3 +22,9 @@ api.getComments = function(topicId, page = 1, ps = 20){
 		params : { page, ps }
 	});
 }
+
+api.postTopic = function(content){
+	return Vue.http.jsonp( domain_url + 'topics/post', {
+		params : { content }
+	});
+}

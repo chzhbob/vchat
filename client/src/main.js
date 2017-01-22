@@ -5,6 +5,7 @@ import App from './App.vue'
 import store from './store'
 import Admin from './components/Admin.vue'
 import List from './components/List.vue'
+import Post from './components/Post.vue'
 import Topic from './components/detail/Topic.vue'
 
 import '../static/core.css'
@@ -16,6 +17,7 @@ Vue.use(VueRouter);
 const routes = [
 	{ path: '/admin', component: Admin },
 	{ path: '/list', component: List },
+	{ path: '/post', component: Post },
 	{ path: '/topic/:topicId', component: Topic }
 ]
 

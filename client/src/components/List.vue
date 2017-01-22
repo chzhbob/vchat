@@ -1,5 +1,6 @@
 <template>
 	<section class="wrapper">
+		<router-link to="post">发布</router-link>
 		<section class="right">
 			<Topics :topics="topics"></Topics>
 		</section>
