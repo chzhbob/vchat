@@ -13,8 +13,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import Topics from './list/Topics.vue'
+
+import api from '../api/index'
+
 export default {
 	name: 'post',
 	data(){
@@ -25,10 +26,14 @@ export default {
 	},
 	methods:{
 		submit: function(){
-			this.$store.dispatch('postTopic', {
-				title: this.title,
-				content : this.content
-			});
+			api.postTopic(this.title, this.content).then(
+				data => this.$router.back(),
+				err => this.error(err)
+			);
+		},
+
+		error: function(err){
+			alert(err)
 		}
 	}
 }

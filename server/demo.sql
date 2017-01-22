@@ -83,8 +83,8 @@ CREATE TABLE `topics` (
   `category_id` int(11) DEFAULT NULL,
   `title` varchar(128) COLLATE utf8mb4_german2_ci DEFAULT NULL,
   `content` text COLLATE utf8mb4_german2_ci,
-  `views` int(11) DEFAULT NULL,
-  `comments` int(11) DEFAULT NULL,
+  `views` int(11) DEFAULT '0',
+  `comments` int(11) DEFAULT '0',
   `created_by` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `modified_by` int(11) DEFAULT NULL,
@@ -93,7 +93,7 @@ CREATE TABLE `topics` (
   `last_reply_name` varchar(64) COLLATE utf8mb4_german2_ci DEFAULT NULL,
   `last_reply_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
 
 /*Table structure for table `users` */
 
@@ -107,7 +107,7 @@ CREATE TABLE `users` (
   `last_sign_in` datetime DEFAULT NULL,
   `email` varchar(256) COLLATE utf8mb4_german2_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

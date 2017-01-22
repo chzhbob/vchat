@@ -41,6 +41,20 @@ exports.queryOne = (str, callback) => {
     });
 }
 
+exports.queryTotal = (str, callback) => {
+	return new Promise( (resolve, reject) => {
+        let connection = mysql.createConnection(MYSQL_CONFIG);
+		connection.connect();
+		connection.query(str, (err, rows, fields) => {
+			connection.end();
+			if(err){
+				reject(err);
+			}
+			resolve((rows.length && rows[0]['COUNT(1)']) ? rows[0]['COUNT(1)'] : 0);
+		});
+    });
+}
+
 exports.escape = (str) => {
 	return mysql.escape(str);
 }

@@ -4,19 +4,25 @@
 		<section class="right">
 			<Topics :topics="topics"></Topics>
 		</section>
+		<PageNavi :pa="page" :ps="pageSize" :total="total"></PageNavi>
 	</section>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import Topics from './list/Topics.vue'
+import PageNavi from './util/PageNavi.vue'
 export default {
 	name: 'list',
 	components: {
-		Topics
+		Topics,
+		PageNavi
 	},
 	computed: mapGetters({
-		topics : 'topics'
+		topics : 'topics',
+		page : 'topicsPage',
+		pageSize : 'topicsPageSize',
+		total : 'topicsTotal'
 	}),
 	created: function(){
 		this.$store.dispatch('getHotTopics');

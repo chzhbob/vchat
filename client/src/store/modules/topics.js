@@ -2,16 +2,23 @@ import * as types from '../types'
 import api from '../../api/index'
 
 const state = {
-	items: []
+	items: [],
+	page: 1,
+	pageSize: 20,
+	total: 0
 }
 
 const getters = {
-	topics: state => state.items
+	topics: state => state.items,
+	topicsPage: state => state.page,
+	topicsPageSize: state => state.pageSize,
+	topicsTotal: state => state.total
 }
 
 const mutations = {
 	[types.TOPICS_UPDATE](state, payload){
 		state.items = payload.items;
+		state.total = payload.total;
 	},
 
 	[types.TOPIC_POST_BACK](state, payload){
@@ -21,8 +28,12 @@ const mutations = {
 }
 
 const actions = {
-	getHotTopics({ commit, state }){
-		api.getTopics().then(result => commit(types.TOPICS_UPDATE, { items : result.data.topics }));
+	getHotTopics({ commit, state }, payload){
+		if(payload){
+			api.getTopics(payload.page, state.pageSize).then(result => commit(types.TOPICS_UPDATE, { items : result.data.topics, total : result.data.total }));	
+		}else{
+			api.getTopics(state.page, state.pageSize).then(result => commit(types.TOPICS_UPDATE, { items : result.data.topics, total : result.data.total }));	
+		}
 	}
 }
 
