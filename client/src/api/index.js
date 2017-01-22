@@ -23,8 +23,8 @@ api.getComments = function(topicId, page = 1, ps = 20){
 	});
 }
 
-api.postTopic = function(content){
+api.postTopic = function(title, content){
 	return Vue.http.jsonp( domain_url + 'topics/post', {
-		params : { content }
+		params : { title, content }
 	});
 }

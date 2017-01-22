@@ -2,6 +2,9 @@
 	<section class="wrapper">
 		<section class="right">
 			<section>
+				<input v-model="title" />
+			</section>
+			<section>
 				<textarea v-model="content"></textarea>
 			</section>
 			<a @click="submit" href="javascript:void(0)">发布</a>
@@ -16,18 +19,17 @@ export default {
 	name: 'post',
 	data(){
 		return {
+			title: null,
 			content: null
 		}
 	},
 	methods:{
 		submit: function(){
 			this.$store.dispatch('postTopic', {
+				title: this.title,
 				content : this.content
 			});
 		}
-	},
-
-	created: function(){
 	}
 }
 </script>
@@ -39,8 +41,12 @@ export default {
 	background: white;
 	padding: 20px;
 }
+.right input{
+	width: 100%;
+}
 .right textarea{
 	width: 100%;
+	margin-top: 10px;
 	height: 50px;
 }
 </style>

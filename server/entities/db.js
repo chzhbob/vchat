@@ -40,3 +40,7 @@ exports.queryOne = (str, callback) => {
 		});
     });
 }
+
+exports.escape = (str) => {
+	return mysql.escape(str);
+}

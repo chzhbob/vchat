@@ -21,7 +21,7 @@ const actions = {
 	},
 
 	postTopic({ commit, state }, payload){
-		api.postTopic(payload.content).then(result => commit(types.TOPIC_POST_BACK, { topic : result.data }));
+		api.postTopic(payload.title, payload.content).then(result => commit(types.TOPIC_POST_BACK, { topic : result.data }));
 	},
 }
 

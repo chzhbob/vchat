@@ -16,7 +16,6 @@ export default {
 	methods: {
 		nav: function(){
 			this.$router.push(`/topic/${this.topic.id}`);
-			
 		}
 	}
 }
@@ -25,7 +24,7 @@ export default {
 <template>
 	<li class="topic-item" @click="nav">
 		<section class="avatar">
-			<img :src="topic.avatar" />
+			<img src="~assets/avatar-boy.jpg" />
 		</section>
 		<section class="detail">
 			<h2>{{topic.title}}</h2>
