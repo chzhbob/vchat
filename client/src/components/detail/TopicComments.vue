@@ -1,18 +1,21 @@
+<template>
+	<section>
+		<Comments :comments="comments"></Comments>
+	</section>
+</template>
+
 <script>
 import { mapGetters } from 'vuex'
-import Comment from './list/Comment.vue'
+import Comments from '../list/Comments.vue'
 
 export default {
-	name: 'comments',
-
-	components: {
-		Comment
-	},
-
+	name: 'detailTopicComments',
 	props:{
 		topicId: String
 	},
-	
+	components: {
+		Comments
+	},
 	computed: mapGetters({
 		comments : 'comments'
 	}),
@@ -21,9 +24,3 @@ export default {
 	}
 }
 </script>
-
-<template>
-	<ul class="comments">
-		<Comment v-for="comment of comments" :comment="comment"></Comment>
-	</ul>
-</template>

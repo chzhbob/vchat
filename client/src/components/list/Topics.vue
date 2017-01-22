@@ -1,12 +1,12 @@
 <script>
-import Topic from './list/Topic.vue'
+import Topic from '../item/Topic.vue'
 export default {
-	name: 'Topics',
-	components: {
-		Topic
-	},
+	name: 'listTopics',
 	props: {
 		topics: Array
+	},
+	components: {
+		Topic
 	}
 }
 </script>

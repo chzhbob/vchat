@@ -2,7 +2,7 @@
 import moment from 'moment'
 
 export default {
-	name: 'Topic',
+	name: 'itemTopic',
 	props: {
 		topic: Object
 	},

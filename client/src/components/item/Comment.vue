@@ -1,3 +1,13 @@
+<script>
+
+export default {
+	name: 'itemComment',
+	props:{
+		comment: Object
+	}
+}
+</script>
+
 <template>
 	<section class="wrapper">
 		<section class="right">
@@ -6,16 +16,7 @@
 	</section>
 </template>
 
-<script>
-import { mapGetters } from 'vuex'
 
-export default {
-	name: 'comment',
-	props:{
-		comment: Object
-	}
-}
-</script>
 
 <style scoped>
 .right{

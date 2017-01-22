@@ -4,16 +4,16 @@
 			<h1>{{topic.title}}</h1>
 			<section>{{ topic.content }}</section>
 		</section>
-		<Comments :topicId="$route.params.topicId"></Comments>
+		<TopicComments :topicId="$route.params.topicId"></TopicComments>
 	</section>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import Comments from '../Comments.vue'
+import TopicComments from './TopicComments.vue'
 
 export default {
-	name: 'topic',
+	name: 'detailTopic',
 
 	
 	
@@ -22,7 +22,7 @@ export default {
 	}),
 
 	components: {
-		Comments
+		TopicComments
 	},
 
 	created: function(){

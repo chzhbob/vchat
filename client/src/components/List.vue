@@ -8,9 +8,9 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Topics from './Topics.vue'
+import Topics from './list/Topics.vue'
 export default {
-	name: 'topics',
+	name: 'list',
 	components: {
 		Topics
 	},
