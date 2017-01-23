@@ -10,19 +10,15 @@ export default {
 
 <template>
 	<section class="wrapper">
-		<section class="right">
-			<section>{{ comment.content }}</section>
-		</section>
+		<section>{{ comment.content }}</section>
 	</section>
 </template>
 
 
 
 <style scoped>
-.right{
-	width: 60%;
-	margin: 20px auto;
-	background: white;
-	padding: 20px;
+.wrapper{
+	padding: 10px 0;
+	font-size: 14px;
 }
 </style>

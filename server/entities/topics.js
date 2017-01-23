@@ -33,7 +33,10 @@ exports.post = (title, content) => {
 	var cid = 1;
 	var uid = 1;
 	var uname = 'admin';
-	return db.query("INSERT INTO topics(`category_id`, `title`, `content`, `created_by`, `created_at`, `modified_by`, `modified_at`, `last_reply_by`, `last_reply_name`, `last_reply_at`) VALUES('"+cid+"',"+db.escape(title)+","+db.escape(content)+",'"+uid+"','"+moment().format()+"','"+uid+"','"+moment().format()+"','"+uid+"',"+ db.escape(uname) +",'"+moment().format()+"');");
+	return db.query(`
+		INSERT INTO topics(\`category_id\`, \`title\`, \`content\`, \`created_by\`, \`created_at\`, \`modified_by\`, \`modified_at\`, \`last_reply_by\`, \`last_reply_name\`, \`last_reply_at\`) 
+		VALUES('${cid}',${db.escape(title)},${db.escape(content)},'${uid}','${moment().format()}','${uid}','${moment().format()}','${uid}',${db.escape(uname)},'${moment().format()}');
+	`);
 };
 
 exports.getTotal = () => {

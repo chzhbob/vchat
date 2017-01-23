@@ -30,3 +30,9 @@ api.postTopic = function(title, content){
 		params : { title, content }
 	});
 }
+
+api.postComment = function(topicId, content){
+	return Vue.http.jsonp( domain_url + 'comments/post', {
+		params : { topicId, content }
+	});
+}

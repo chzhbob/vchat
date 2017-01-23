@@ -68,11 +68,19 @@ export default {
 	font-size: 16px;
 	color: #646464;
 	padding-top: 2px;
-	padding-bottom: 5px;
+	padding-right: 50px;
+
+	word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
 }
 .topic-item .detail p{
 	font-size: 12px;
 	color: #7f97b3;
+	padding-top: 5px;
 }
 .topic-item .detail p span{
 	font-weight: bold;

@@ -17,6 +17,7 @@ Vue.use(VueRouter);
 const routes = [
 	{ path: '/admin', component: Admin },
 	{ path: '/list', component: List },
+	{ path: '/list/page/:page', component: List },
 	{ path: '/post', component: Post },
 	{ path: '/topic/:topicId', component: Topic }
 ]

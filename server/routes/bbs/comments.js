@@ -9,4 +9,9 @@ router.get('/topic/:tid', (req, res, next) => {
 	));
 });
 
+router.get('/post', (req, res, next) => {
+	comments.post(req.query.topicId, req.query.content).then(result => res.jsonp({code: 0, comment: {id: result.insertId}}));
+});
+
+
 module.exports = router;

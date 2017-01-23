@@ -1,6 +1,6 @@
 <template>
-	<section>
-		<span v-for="(i,item) of items" @click="navi(i)">{{i}}</span>
+	<section class="navi">
+		<span v-for="(i,item) of items" @click="navi(i)" :class="{'active' : pa == i}">{{i}}</span>
 	</section>
 </template>
 
@@ -12,7 +12,8 @@ export default {
 	props: {
 		pa: Number,
 		ps: Number,
-		total: Number
+		total: Number,
+		target: String
 	},
 
 	computed: {
@@ -23,9 +24,34 @@ export default {
 
 	methods: {
 		navi: function(index){
-			this.$router.push('list/2');
-			// this.$store.dispatch('getHotTopics', {page : index});
+			this.$router.push(`/${this.target}/page/${index}`);
 		}
 	}
 }
 </script>
+
+<style scoped>
+.navi{
+	width: 60%;
+	margin: 20px auto;
+	background: white;
+	padding: 20px;
+	overflow: hidden;
+}
+.navi span{
+	display: block;
+	float: left;
+	border: 1px solid #ddd;
+	line-height: 24px;
+	font-size: 12px;
+	color: #ccc;
+	padding: 0 10px;
+	margin-right: 5px;
+	cursor: pointer;
+}
+.navi span.active{
+	color: #7f97b3;
+	border-color: #ccc;
+	font-weight: bold;
+}
+</style>

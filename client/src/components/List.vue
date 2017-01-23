@@ -1,10 +1,12 @@
 <template>
 	<section class="wrapper">
-		<router-link to="post">发布</router-link>
+		<section class="post">
+			<router-link to="/post">发布</router-link>
+		</section>
 		<section class="right">
 			<Topics :topics="topics"></Topics>
 		</section>
-		<PageNavi :pa="page" :ps="pageSize" :total="total"></PageNavi>
+		<PageNavi :pa="page" :ps="pageSize" :total="total" :target="'list'"></PageNavi>
 	</section>
 </template>
 
@@ -24,8 +26,16 @@ export default {
 		pageSize : 'topicsPageSize',
 		total : 'topicsTotal'
 	}),
+	watch:{
+		'$route' : 'fetchData'
+	},
 	created: function(){
-		this.$store.dispatch('getHotTopics');
+		this.fetchData();
+	},
+	methods: {
+		fetchData: function(){
+			this.$store.dispatch('getHotTopics' , {page : Number.parseInt(this.$route.params.page)});
+		}
 	}
 }
 </script>
@@ -36,5 +46,15 @@ export default {
 	margin: 20px auto;
 	background: white;
 	padding: 20px;
+}
+.post{
+	width: 60%;
+	margin: 20px auto;
+	background: white;
+	padding: 20px;
+}
+.post a{
+	font-size: 14px;
+	color: #333;
 }
 </style>
