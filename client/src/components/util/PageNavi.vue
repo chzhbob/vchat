@@ -18,7 +18,12 @@ export default {
 
 	computed: {
 		items: function(){
-			return Math.ceil(this.total / this.ps);	
+			if(this.total && this.ps){
+				return Math.ceil(this.total / this.ps);	
+			}else{
+				return 0;
+			}
+			
 		}
 	},
 

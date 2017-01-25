@@ -34,7 +34,7 @@ export default {
 	},
 	methods: {
 		fetchData: function(){
-			this.$store.dispatch('getHotTopics' , {page : Number.parseInt(this.$route.params.page)});
+			this.$store.dispatch('getHotTopics' , {page : this.$route.params.page ? Number.parseInt(this.$route.params.page) : 1});
 		}
 	}
 }

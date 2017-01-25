@@ -21,8 +21,12 @@ exports.getByTopicId = (topic_id, page = 1, pageSize = 20) => {
 exports.post = (topicId, content) => {
 	var uid = 1;
 	var uname = 'admin';
-	return db.query(`
+	return db.querys([`
 		INSERT INTO comments(\`topic_id\`, \`content\`, \`created_by\`, \`created_name\` , \`created_at\`, \`modified_by\`, \`modified_at\`)
 		 VALUES('${topicId}',${db.escape(content)},'${uid}',${db.escape(uname)},'${moment().format()}','${uid}','${moment().format()}');
-	`);
+	`, `
+		UPDATE topics SET \`comments\` = \`comments\` + 1 , \`last_reply_by\` = '${uid}' , 
+		\`last_reply_at\` = '${moment().format()}' , \`last_reply_name\` = ${db.escape(uname)} 
+		WHERE id = ${topicId}
+	`]);
 };
