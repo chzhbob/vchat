@@ -9,7 +9,8 @@
 
 <script>
 
-import api from '../../api/index'
+import { mapGetters } from 'vuex'
+import * as types from '../../store/types'
 
 export default {
 	name: 'detailCommentInput',
@@ -22,16 +23,23 @@ export default {
 			content: null
 		}
 	},
+	computed: mapGetters({
+		postState : 'postState'
+	}),
+	watch: {
+		postState : function(newPostState){
+			if(newPostState == 1){
+				this.content = '';
+			}else if(newPostState == 2){
+				// FIX ME notify fail
+			}
+
+			this.$store.commit(types.COMMENTS_POST_RESET);
+		}
+	},
 	methods:{
 		submit: function(){
-			api.postComment(this.topicId, this.content).then(
-				data => this.$router.back(),
-				err => this.error(err)
-			);
-		},
-
-		error: function(err){
-			alert(err)
+			this.$store.dispatch('postComment', {topicId: this.topicId, content: this.content});
 		}
 	}
 }
