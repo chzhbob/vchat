@@ -1,12 +1,12 @@
 <template>
-	<section class="wrapper">
+	<section v-if="isReady" class="wrapper">
 		<section class="right">
 			<section class="main">
 				<h1>{{topic.title}}</h1>
 				<section v-html="content" class="content" ></section>
 			</section>
-			<TopicComments :topicId="$route.params.topicId"></TopicComments>
-			<CommentInput :topicId="$route.params.topicId"></CommentInput>
+			<TopicComments :topicId="topicId"></TopicComments>
+			<CommentInput :topicId="topicId"></CommentInput>
 		</section>
 	</section>
 </template>
@@ -19,7 +19,17 @@ import CommentInput from './CommentInput.vue'
 
 export default {
 	name: 'detailTopic',
+	components: {
+		TopicComments,
+		CommentInput
+	},
 
+	data(){
+		return{
+			isReady: false,
+			topicId: null
+		}
+	},
 	computed: {
 		...mapGetters({
 			topic : 'topic'
@@ -28,14 +38,25 @@ export default {
 			return xss(this.topic.content);
 		}
 	},
-
-	components: {
-		TopicComments,
-		CommentInput
+	watch: {
+		topic : function(newTopic){
+			newTopic === {} ? this.isReady = false : this.isReady = true;
+		}
 	},
-
+	methods: {
+		fetchData: function(){
+			this.topicId = this.$route.params.topicId
+			this.$store.dispatch('getTopic', {topicId: this.topicId});
+		}
+	},
+	beforeRouteUpdate: function(to, from, next){
+		this.topicId = null;
+		this.isReady = false;
+		this.fetchData();
+		next();
+	},
 	created: function(){
-		this.$store.dispatch('getTopic', {topicId: this.$route.params.topicId});
+		this.fetchData();
 	}
 }
 </script>

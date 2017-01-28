@@ -3,17 +3,33 @@ import api from '../../api/index'
 
 const state = {
 	items: [],
+	page: 1,
+	pageSize: 20,
+	isLoadAll: false,
 	postState: 0 // 0:发送中 1:发送成功 2:发送失败
 }
 
 const getters = {
 	comments: state => state.items,
-	postState: state => state.postState
+	postState: state => state.postState,
+	commentsLoadAll: state => state.isLoadAll
 }
 
 const mutations = {
+	resetComments(state){
+		state.items = [];
+		state.page = 1;
+		state.pageSize = 20;
+		state.isLoadAll = false;
+		state.postState = 0;
+	},
+
 	[types.COMMENTS_UPDATE](state, payload){
-		state.items = payload.items;
+		if(payload.items.length < state.pageSize){
+			state.isLoadAll = true;
+		}
+		state.items = state.items.concat(payload.items);
+		state.page++;
 	},
 
 	[types.COMMENTS_POST_RESET](state){
@@ -27,12 +43,12 @@ const mutations = {
 
 	[types.COMMENTS_POST_FAIL](state, payload){
 		state.postState = 2;
-	},
+	}
 }
 
 const actions = {
 	getComments({ commit, state }, payload){
-		api.getComments(payload.topicId).then(result => commit(types.COMMENTS_UPDATE, { items : result.data.comments }));
+		api.getComments(payload.topicId, state.page, state.pageSize).then(result => commit(types.COMMENTS_UPDATE, { items : result.data.comments }));
 	},
 
 	postComment({ commit, state }, payload){

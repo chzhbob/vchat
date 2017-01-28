@@ -13,6 +13,6 @@ export default {
 
 <template>
 	<ul class="comments">
-		<Comment v-for="comment of comments" :comment="comment"></Comment>
+		<Comment v-for="comment of comments" :comment="comment" ></Comment>
 	</ul>
 </template>
