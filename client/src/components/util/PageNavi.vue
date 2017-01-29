@@ -37,7 +37,7 @@ export default {
 
 <style scoped>
 .navi{
-	width: 60%;
+	width: 1110px;
 	margin: 20px auto;
 	background: white;
 	padding: 20px;

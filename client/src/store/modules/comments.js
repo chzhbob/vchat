@@ -5,7 +5,7 @@ const state = {
 	items: [],
 	page: 1,
 	pageSize: 20,
-	isLoadAll: false,
+	isLoadAll: true,
 	postState: 0 // 0:发送中 1:发送成功 2:发送失败
 }
 
@@ -20,13 +20,15 @@ const mutations = {
 		state.items = [];
 		state.page = 1;
 		state.pageSize = 20;
-		state.isLoadAll = false;
+		state.isLoadAll = true;
 		state.postState = 0;
 	},
 
 	[types.COMMENTS_UPDATE](state, payload){
 		if(payload.items.length < state.pageSize){
 			state.isLoadAll = true;
+		}else{
+			state.isLoadAll = false;
 		}
 		state.items = state.items.concat(payload.items);
 		state.page++;

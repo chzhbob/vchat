@@ -42,13 +42,13 @@ export default {
 
 <style scoped>
 .right{
-	width: 60%;
+	width: 1110px;
 	margin: 20px auto;
 	background: white;
 	padding: 20px;
 }
 .post{
-	width: 60%;
+	width: 1110px;
 	margin: 20px auto;
 	background: white;
 	padding: 20px;

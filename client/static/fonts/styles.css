@@ -89,3 +89,6 @@
 .v-heart-o:before {
   content: "\71";
 }
+.v-search:before {
+  content: "\72";
+}
