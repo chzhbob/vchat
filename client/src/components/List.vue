@@ -1,6 +1,6 @@
 <template>
 	<section class="wrapper">
-		<section class="post">
+		<section class="left">
 			<router-link to="/post">发布</router-link>
 		</section>
 		<section class="right">
@@ -41,11 +41,17 @@ export default {
 </script>
 
 <style scoped>
-.right{
+.wrapper{
 	width: 1110px;
 	margin: 20px auto;
 	background: white;
-	padding: 20px;
+}
+.left{
+	width: 185px;
+	float: left;
+}
+.right{
+	margin-left: 185px;
 }
 .post{
 	width: 1110px;

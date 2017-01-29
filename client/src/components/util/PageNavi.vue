@@ -1,6 +1,8 @@
 <template>
 	<section class="navi">
-		<span v-for="(i,item) of items" @click="navi(i)" :class="{'active' : pa == i}">{{i}}</span>
+		<section class="navi-wrapper">
+			<span v-for="(i,item) of items" @click="navi(i)" :class="{'active' : pa == i}">{{i}}</span>
+		</section>
 	</section>
 </template>
 
@@ -42,6 +44,10 @@ export default {
 	background: white;
 	padding: 20px;
 	overflow: hidden;
+}
+.navi-wrapper{
+	overflow: hidden;
+	float: right;
 }
 .navi span{
 	display: block;

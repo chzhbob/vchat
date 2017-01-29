@@ -11,8 +11,10 @@
 				<li>登录</li>
 			</ul>
 			<section class="search">
-				<i class="icon v-search"></i>
-				<input placeholder="搜索" />
+				<i class="v-search"></i>
+				<section class="input-wrapper">
+					<input placeholder="搜索" />
+				</section>
 			</section>
 		</section>
 	</section>
@@ -23,6 +25,7 @@
 	width: 100%;
 	height: 67px;
 	background: white;
+	border-bottom: 1px solid #ddd;
 }
 .inner{
 	width: 1110px;
@@ -55,22 +58,33 @@
 .search{
 	float: right;
 	width: 220px;
-	height: 36px;
-	background: #e5ecf4;
+	height: 38px;
+	/*background: #e5ecf4;*/
+	border: 1px solid #e5ecf4;
 	border-radius: 3px;
-	padding: 5px;
+	padding: 5px 10px;
 	margin-top: 15px;
 	margin-right: 15px;
 }
-.search input{
+.search i{
+	font-size: 14px;
+	color: #7f97b3;
+	width: 24px;
+	float: left;
+	line-height: 29px;
+}
+.search .input-wrapper{
+	margin-left: 24px;
+}
+.search .input-wrapper input{
 	width: 100%;
-	height: 26px;
-	line-height: 26px;
 	border: none;
 	background: none;
 	outline: none;
 	font-size: 14px;
-	color: #7f97b3;
+	color: #4f89db;
+	height: 26px;
+	line-height: 26px;
 }
 ::-webkit-input-placeholder{
 	color: #7f97b3; 
