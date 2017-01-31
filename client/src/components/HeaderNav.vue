@@ -3,12 +3,12 @@
 		<section class="inner">
 			<ul class="nav">
 				<li>vchat</li>
-				<li>热门讨论</li>
+				<li><router-link to="/list">热门讨论</router-link></li>
 				<li>关于</li>
 			</ul>
 			<ul class="sign">
-				<li>注册</li>
-				<li>登录</li>
+				<li><router-link to="/reg">注册</router-link></li>
+				<li><router-link to="/login">登录</router-link></li>
 			</ul>
 			<section class="search">
 				<i class="v-search"></i>
@@ -44,16 +44,22 @@
 	padding: 0 40px;
 	cursor: pointer;
 }
+.nav li a{
+	text-decoration: none;
+	color: #7f97b3;
+}
 .sign{
 	float: right;
 }
 .sign li{
 	float: left;
 	font-size: 14px;
-	color: #7f97b3;
 	line-height: 67px;
 	padding: 0 20px;
-	cursor: pointer;
+}
+.sign li a{
+	text-decoration: none;
+	color: #7f97b3;
 }
 .search{
 	float: right;

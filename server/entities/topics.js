@@ -9,7 +9,7 @@ exports.getByPage = (page = 1, pageSize = 20, category_id = 0) => {
 	}
 
 	return db.query(`
-		SELECT t.* FROM topics t 
+		SELECT t.*,u.nickname,u.avatar FROM topics t 
 		LEFT JOIN users u ON t.created_by = u.id 
 		${category_id == 0 ? `` : `WHERE t.category_id = ${Number.parseInt(category_id)}`} 
 		ORDER BY t.last_reply_at DESC 
@@ -24,7 +24,9 @@ exports.getById = (topic_id) => {
 	}
 
 	return db.queryOne(`
-		SELECT * FROM topics WHERE id = ${Number.parseInt(topic_id)} 
+		SELECT t.*,u.nickname,u.avatar FROM topics t 
+		LEFT JOIN users u ON t.created_by = u.id 
+		WHERE t.id = ${Number.parseInt(topic_id)} 
 		AND 'status' = ${db.TOPIC_STATUS.VALID}
 	`);
 };

@@ -4,7 +4,7 @@
             <section class="form-header">
                 <p></p><p></p><p></p><p></p><p></p><p></p>
             </section>
-            <h1>登陆</h1>
+            <h1>登录</h1>
             <section class="form-input">
                 <input type="text" placeholder="用户名" />
                 <input type="password" placeholder="密码" />

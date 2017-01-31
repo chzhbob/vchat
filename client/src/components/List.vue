@@ -1,7 +1,7 @@
 <template>
 	<section class="wrapper">
 		<section class="left">
-			<router-link to="/post">发布</router-link>
+			<router-link class="post" to="/post">发布</router-link>
 		</section>
 		<section class="right">
 			<Topics :topics="topics"></Topics>
@@ -43,22 +43,29 @@ export default {
 <style scoped>
 .wrapper{
 	width: 1110px;
-	margin: 20px auto;
+	margin: 40px auto;
 	background: white;
 }
 .left{
 	width: 185px;
 	float: left;
 }
+.left .post{
+	display: block;
+	height: 36px;
+	line-height: 36px;
+	background: #31db7a;
+	text-align: center;
+	color: white;
+	width: 100%;
+	text-decoration: none;
+	border-radius: 3px;
+	font-size: 14px;
+}
 .right{
-	margin-left: 185px;
+	margin-left: 215px;
 }
-.post{
-	width: 1110px;
-	margin: 20px auto;
-	background: white;
-	padding: 20px;
-}
+
 .post a{
 	font-size: 14px;
 	color: #333;
