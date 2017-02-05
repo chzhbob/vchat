@@ -39,7 +39,7 @@ export default {
 	font-size: 14px;
 }
 .main{
-	padding: 0px 0 35px;
+	padding: 35px 0 35px;
 	border-bottom: 1px solid #e7ecf0;
 	overflow: hidden;
 }

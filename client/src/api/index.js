@@ -36,3 +36,15 @@ api.postComment = function(topicId, content){
 		params : { topicId, content }
 	});
 }
+
+api.register = function(email, password){
+	return Vue.http.jsonp( domain_url + 'users/register', {
+		params : { email, password }
+	});
+}
+
+api.login = function(email, password){
+	return Vue.http.jsonp( domain_url + 'users/login', {
+		params : { email, password }
+	});
+}

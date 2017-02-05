@@ -7,7 +7,7 @@
 				<li>关于</li>
 			</ul>
 			<ul class="sign">
-				<li><router-link to="/reg">注册</router-link></li>
+				<li><router-link to="/register">注册</router-link></li>
 				<li><router-link to="/login">登录</router-link></li>
 			</ul>
 			<section class="search">

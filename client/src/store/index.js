@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import user from './modules/user'
 import topic from './modules/topic'
 import topics from './modules/topics'
 import comments from './modules/comments'
@@ -10,6 +11,7 @@ const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
 	modules:{
+		user,
 		topic,
 		topics,
 		comments

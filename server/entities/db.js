@@ -8,6 +8,8 @@ const MYSQL_CONFIG = {
 	connectionLimit: 10
 }
 
+
+
 let mysql = require('mysql');
 let pool  = mysql.createPool(MYSQL_CONFIG);
 
@@ -16,6 +18,8 @@ exports.TOPIC_STATUS = {
 	DRAFT  : 1,
 	DELETE : 2
 }
+
+exports.SALT = '1989112319891126';
 
 
 exports.query = str => {

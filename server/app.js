@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var ejs = require('ejs');
+var session = require('express-session');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -16,6 +17,11 @@ var replies = require('./routes/bbs/replies');
 
 var app = express();
 
+app.use(session({
+	secret: '1989112319891126',
+	resave: false,
+	saveUninitialized: true
+}));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', ejs.__express);
@@ -30,7 +36,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/api/users', users);
 app.use('/api/topics', topics);
 app.use('/api/comments', comments);
 app.use('/api/replies', replies);
