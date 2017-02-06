@@ -1,8 +1,31 @@
+<template>
+	<li class="topic-item" @click="nav">
+		<section class="avatar">
+			<Avatar :username="topic.nickname" :size="45" ></Avatar>
+			<img v-if="topic.avatar" :src="topic.avatar" onerror="this.style.display='none'" class="img-avatar"/>
+		</section>
+		<section class="detail">
+			<h2>{{topic.title}}</h2>
+			<p><span>{{topic.last_reply_name}}</span> {{ fromNow }}</p>
+			<section class="controls">
+				<section class="comments">
+					<i class="v-comment-o"></i>
+					{{topic.comments}}
+				</section>
+			</section>
+		</section>
+	</li>
+</template>
+
 <script>
 import moment from 'moment'
+import Avatar from 'vue-avatar/dist/Avatar'
 
 export default {
 	name: 'itemTopic',
+	components: {
+		Avatar
+	},
 	props: {
 		topic: Object
 	},
@@ -21,23 +44,7 @@ export default {
 }
 </script>
 
-<template>
-	<li class="topic-item" @click="nav">
-		<section class="avatar">
-			<img src="~assets/avatar-boy.jpg" />
-		</section>
-		<section class="detail">
-			<h2>{{topic.title}}</h2>
-			<p><span>{{topic.last_reply_name}}</span> {{ fromNow }}</p>
-			<section class="controls">
-				<section class="comments">
-					<i class="v-comment-o"></i>
-					{{topic.comments}}
-				</section>
-			</section>
-		</section>
-	</li>
-</template>
+
 
 <style scoped>
 .topic-item{
@@ -53,6 +60,12 @@ export default {
 	width: 45px;
 	height: 45px;
 	float: left;
+	position: relative;
+}
+.topic-item .avatar .img-avatar{
+	position: absolute;
+	left: 0px;
+	top: 0px;
 }
 .topic-item .avatar img{
 	width: 100%;

@@ -1,9 +1,13 @@
 <script>
 import moment from 'moment'
 import xss from 'xss'
+import Avatar from 'vue-avatar/dist/Avatar'
 
 export default {
 	name: 'itemComment',
+	components: {
+		Avatar
+	},
 	props:{
 		comment: Object
 	},
@@ -22,10 +26,11 @@ export default {
 <template>
 	<section class="main">
 		<section class="avatar">
-			<img :src="comment.created_avatar">
+			<Avatar :username="comment.nickname" :size="68"></Avatar>
+			<img v-if="comment.avatar" :src="comment.avatar" onerror="this.style.display='none'" class="img-avatar"/>
 		</section>
 		<section class="main-content">
-			<p><span class="nickname">{{comment.created_name}}</span><span class="fromnow">{{ fromNow }}</span></p>
+			<p><span class="nickname">{{comment.nickname}}</span><span class="fromnow">{{ fromNow }}</span></p>
 			<section v-html="content" class="content" ></section>
 		</section>
 	</section>
@@ -50,6 +55,12 @@ export default {
 	background: url(~assets/avatar-boy.jpg) no-repeat;
 	background-size: 100% 100%;
 	border-radius: 100%;
+	position: relative;
+}
+.main .avatar .img-avatar{
+	position: absolute;
+	left: 0;
+	top: 0;
 }
 .main .avatar img{
 	width: 100%;

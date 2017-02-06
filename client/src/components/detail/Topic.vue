@@ -3,7 +3,8 @@
 		<section class="right">
 			<section class="main">
 				<section class="avatar">
-					<img :src="topic.avatar">
+					<Avatar :username="topic.nickname" :size="68"></Avatar>
+					<img v-if="topic.avatar" :src="topic.avatar" onerror="this.style.display='none'" class="img-avatar"/>
 				</section>
 				<section class="main-content">
 					<p><span class="nickname">{{topic.nickname}}</span><span class="fromnow">{{ fromNow }}</span></p>
@@ -23,12 +24,14 @@ import xss from 'xss'
 import TopicComments from './TopicComments.vue'
 import CommentInput from './CommentInput.vue'
 import moment from 'moment'
+import Avatar from 'vue-avatar/dist/Avatar'
 
 export default {
 	name: 'detailTopic',
 	components: {
 		TopicComments,
-		CommentInput
+		CommentInput,
+		Avatar
 	},
 
 	data(){
@@ -91,6 +94,12 @@ export default {
 	background: url(~assets/avatar-boy.jpg) no-repeat;
 	background-size: 100% 100%;
 	border-radius: 100%;
+	position: relative;
+}
+.main .avatar .img-avatar{
+	position: absolute;
+	left: 0px;
+	top: 0px;
 }
 .main .avatar img{
 	width: 100%;

@@ -11,9 +11,11 @@ router.get('/login', (req, res, next) => {
 		result => {
 			req.session['uid'] = result.id;
 			req.session['nickname'] = result.nickname;
+			req.session['avatar'] = result.avatar;
 			res.jsonp({code: 0, user: {
 				uid: result.id,
-				nickname: result.nickname
+				nickname: result.nickname,
+				avatar: result.avatar
 			}});
 		},
 		err => {
@@ -36,7 +38,8 @@ router.get('/getLoginStatus', (req, res, next) => {
 	if(req.session['uid'] && req.session['nickname']){
 		res.jsonp({code: 0, user: {
 			uid: req.session['uid'],
-			nickname: req.session['nickname']
+			nickname: req.session['nickname'],
+			avatar: req.session['avatar']
 		}});
 	}else{
 		res.jsonp({code: 1});

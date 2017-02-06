@@ -75,12 +75,17 @@ export default {
 	font-size: 14px;
 	color: #7f97b3;
 	line-height: 67px;
-	padding: 0 40px;
+	padding: 0 24px;
 	cursor: pointer;
 }
 .nav li a{
 	text-decoration: none;
 	color: #7f97b3;
+	padding: 9px 16px;
+	border-radius: 5px;
+}
+.nav li a.router-link-active{
+	background: #e5ecf4;
 }
 .sign{
 	float: right;
@@ -90,6 +95,7 @@ export default {
 	font-size: 14px;
 	line-height: 67px;
 	padding: 0 20px;
+	color: #7f97b3;
 }
 .sign li a{
 	text-decoration: none;
