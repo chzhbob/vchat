@@ -12,7 +12,7 @@ var users = require('./routes/users');
 var boss = require('./routes/boss');
 var topics = require('./routes/bbs/topics');
 var comments = require('./routes/bbs/comments');
-var replies = require('./routes/bbs/replies');
+
 
 
 var app = express();
@@ -39,7 +39,6 @@ app.use('/', index);
 app.use('/api/users', users);
 app.use('/api/topics', topics);
 app.use('/api/comments', comments);
-app.use('/api/replies', replies);
 app.use('/boss', boss);
 
 // catch 404 and forward to error handler

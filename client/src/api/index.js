@@ -48,3 +48,11 @@ api.login = function(email, password){
 		params : { email, password }
 	});
 }
+
+api.logout = function(){
+	return Vue.http.jsonp( domain_url + 'users/logout' );
+}
+
+api.getLoginStatus = function(){
+	return Vue.http.jsonp( domain_url + 'users/getLoginStatus' );
+}

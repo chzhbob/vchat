@@ -27,7 +27,13 @@ export default {
 	methods:{
 		submit: function(){
 			api.postTopic(this.title, this.content).then(
-				data => this.$router.back(),
+				data => {
+					if(data.data.code == 0){
+						this.$router.back();
+					}else{
+						this.error(data.data.msg)
+					}
+				},
 				err => this.error(err)
 			);
 		},

@@ -23,7 +23,7 @@ var verifyPassword = (user, password) => {
 	return new Promise( (resolve, reject) => {
 		let hash = crypto.createHmac('sha256', db.SALT).update(password).digest('hex');
 		if(user && hash === user.password){
-			resolve({id: user.id});
+			resolve({id: user.id, nickname: user.nickname, avatar: user.avatar});
 		}else{
 			reject({msg: 'password error'});
 		}

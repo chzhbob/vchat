@@ -6,13 +6,15 @@ const state = {
 	page: 1,
 	pageSize: 20,
 	isLoadAll: true,
-	postState: 0 // 0:发送中 1:发送成功 2:发送失败
+	postState: 0, // 0:发送中 1:发送成功 2:发送失败
+	postMsg: '' // 失败信息
 }
 
 const getters = {
 	comments: state => state.items,
 	postState: state => state.postState,
-	commentsLoadAll: state => state.isLoadAll
+	commentsLoadAll: state => state.isLoadAll,
+	postMsg: state => state.postMsg
 }
 
 const mutations = {
@@ -36,6 +38,7 @@ const mutations = {
 
 	[types.COMMENTS_POST_RESET](state){
 		state.postState = 0;
+		state.postMsg = '';
 	},
 
 	[types.COMMENTS_POST_SUCCESS](state, payload){
@@ -45,6 +48,7 @@ const mutations = {
 
 	[types.COMMENTS_POST_FAIL](state, payload){
 		state.postState = 2;
+		state.postMsg = payload.msg;
 	}
 }
 
@@ -55,12 +59,22 @@ const actions = {
 
 	postComment({ commit, state }, payload){
 		api.postComment(payload.topicId, payload.content).then(
-			result => commit(types.COMMENTS_POST_SUCCESS, {
+			result => {
+				if(result.data.code == 0){
+					commit(types.COMMENTS_POST_SUCCESS, {
 						id : result.data.comment.id,
 						content : payload.content
-					}),
+					});
+				}else{
+					commit(types.COMMENTS_POST_FAIL, {
+						content : payload.content,
+						msg: result.data.msg
+					});
+				}
+			},
 			err => commit(types.COMMENTS_POST_FAIL, {
-				content : payload.content
+				content : payload.content,
+				msg: result.data.msg
 			})
 		);
 	},

@@ -10,7 +10,11 @@ router.get('/login', (req, res, next) => {
 	users.login(req.query.email, req.query.password).then(
 		result => {
 			req.session['uid'] = result.id;
-			res.jsonp({code: 0});
+			req.session['nickname'] = result.nickname;
+			res.jsonp({code: 0, user: {
+				uid: result.id,
+				nickname: result.nickname
+			}});
 		},
 		err => {
 			res.jsonp({
@@ -19,6 +23,24 @@ router.get('/login', (req, res, next) => {
 			});
 		}
 	);
+});
+
+router.get('/logout', (req, res, next) => {
+	req.session['uid'] = null;
+	req.session['nickname'] = null;
+	req.session['avatar'] = null;
+	res.jsonp({code: 0});
+});
+
+router.get('/getLoginStatus', (req, res, next) => {
+	if(req.session['uid'] && req.session['nickname']){
+		res.jsonp({code: 0, user: {
+			uid: req.session['uid'],
+			nickname: req.session['nickname']
+		}});
+	}else{
+		res.jsonp({code: 1});
+	}
 });
 
 module.exports = router;

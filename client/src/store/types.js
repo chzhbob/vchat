@@ -9,3 +9,5 @@ export const COMMENTS_POST_SUCCESS = 'comments/POST/SUCCESS'
 export const COMMENTS_POST_FAIL = 'comments/POST/FAIL'
 
 export const COMMENTS_POST_RESET = 'comments/POST/RESET'
+
+export const USERS_UPDATE_STATUS = 'users/UPDATE/STATUS'

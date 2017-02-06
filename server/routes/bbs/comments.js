@@ -10,7 +10,10 @@ router.get('/topic/:tid', (req, res, next) => {
 });
 
 router.get('/post', (req, res, next) => {
-	comments.post(req.query.topicId, req.query.content).then(results => res.jsonp({code: 0, comment: {id: results[0].insertId}}));
+	comments.post(req.query.topicId, req.query.content, req.session.uid, req.session.nickname, req.session.avatar).then(
+		results => res.jsonp({code: 0, comment: {id: results[0].insertId}}),
+		err => res.jsonp({code: 1, msg: err.msg})
+	);
 });
 
 

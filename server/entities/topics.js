@@ -31,13 +31,19 @@ exports.getById = (topic_id) => {
 	`);
 };
 
-exports.post = (title, content) => {
+exports.post = (title, content, uid, nickname, avatar) => {
 	var cid = 1;
-	var uid = 1;
-	var uname = 'admin';
+	if(title.length <= 0 || content.length <= 0){
+		return Promise.reject({msg: '内容不能为空'});
+	}
+
+	if(!uid || !nickname){
+		return Promise.reject({msg: '您还没有登录哦'});
+	}
+
 	return db.query(`
 		INSERT INTO topics(\`category_id\`, \`title\`, \`content\`, \`created_by\`, \`created_at\`, \`modified_by\`, \`modified_at\`, \`last_reply_by\`, \`last_reply_name\`, \`last_reply_at\`) 
-		VALUES('${cid}',${db.escape(title)},${db.escape(content)},'${uid}','${moment().format()}','${uid}','${moment().format()}','${uid}',${db.escape(uname)},'${moment().format()}');
+		VALUES('${cid}',${db.escape(title)},${db.escape(content)},'${uid}','${moment().format()}','${uid}','${moment().format()}','${uid}',${db.escape(nickname)},'${moment().format()}');
 	`);
 };
 

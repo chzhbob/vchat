@@ -15,7 +15,7 @@
                 
             </section>
             <section class="forget">
-                已经有账号了？登录
+                已经有账号了？<router-link to="/login">登录</router-link>
             </section>
         </section>
     </section>    
@@ -24,7 +24,7 @@
 <script>
 
 export default {
-    name: 'admin',
+    name: 'register',
     data(){
         return {
             email: '',
@@ -137,6 +137,9 @@ h1{
     color: #2e2f30;
     background: #f7f7f7;
     box-shadow: inset 0px 1px 10px rgba(221,221,221,0.5);
+}
+.forget a{
+    color: #2e2f30;
 }
 
 .form-control{

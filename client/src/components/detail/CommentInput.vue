@@ -24,16 +24,16 @@ export default {
 		}
 	},
 	computed: mapGetters({
-		postState : 'postState'
+		postState : 'postState',
+		postMsg: 'postMsg'
 	}),
 	watch: {
 		postState : function(newPostState){
 			if(newPostState == 1){
 				this.content = '';
 			}else if(newPostState == 2){
-				// FIX ME notify fail
+				alert(this.postMsg);
 			}
-
 			this.$store.commit(types.COMMENTS_POST_RESET);
 		}
 	},

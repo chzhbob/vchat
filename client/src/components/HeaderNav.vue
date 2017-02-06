@@ -7,8 +7,14 @@
 				<li>关于</li>
 			</ul>
 			<ul class="sign">
-				<li><router-link to="/register">注册</router-link></li>
-				<li><router-link to="/login">登录</router-link></li>
+				<template v-if="!uid">
+					<li><router-link to="/register">注册</router-link></li>
+					<li><router-link to="/login">登录</router-link></li>
+				</template>
+				<template v-if="uid">
+					<li>你好，{{nickname}}</li>
+					<li><a href="javascript:void(0);" @click="logout">登出</a></li>
+				</template>
 			</ul>
 			<section class="search">
 				<i class="v-search"></i>
@@ -19,6 +25,34 @@
 		</section>
 	</section>
 </template>
+
+<script>
+
+import { mapGetters } from 'vuex'
+
+export default {
+	name: 'headerNav',
+	data(){
+		return {
+
+		}
+	},
+	computed: mapGetters({
+		uid : 'uid',
+		nickname : 'nickname',
+		avatar : 'avatar'
+	}),
+	methods: {
+		logout: function(){
+			this.$store.dispatch('logout');
+		}
+	},
+	created: function(){
+		this.$store.dispatch('getLoginStatus');
+	}
+}
+
+</script>
 
 <style scoped>
 .header{

@@ -4,7 +4,7 @@
             <section class="form-header">
                 <p></p><p></p><p></p><p></p><p></p><p></p>
             </section>
-            <h1>注册</h1>
+            <h1>登录</h1>
             <section class="form-input">
                 <input v-model="email" type="text" placeholder="邮箱地址" />
                 <input v-model="password" type="password" placeholder="密码" />
@@ -15,7 +15,7 @@
                 
             </section>
             <section class="forget">
-                已经有账号了？登录
+                还没有账号？<router-link to="/register">注册</router-link>
             </section>
         </section>
     </section>    
@@ -24,7 +24,7 @@
 <script>
 
 export default {
-    name: 'admin',
+    name: 'login',
     data(){
         return {
             email: '',
@@ -137,6 +137,9 @@ h1{
     color: #2e2f30;
     background: #f7f7f7;
     box-shadow: inset 0px 1px 10px rgba(221,221,221,0.5);
+}
+.forget a{
+    color: #2e2f30;
 }
 
 .form-control{
