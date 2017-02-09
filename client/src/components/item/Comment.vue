@@ -52,8 +52,6 @@ export default {
 	width: 68px;
 	height: 68px;
 	float: left;
-	background: url(~assets/avatar-boy.jpg) no-repeat;
-	background-size: 100% 100%;
 	border-radius: 100%;
 	position: relative;
 }
@@ -61,6 +59,7 @@ export default {
 	position: absolute;
 	left: 0;
 	top: 0;
+	display: block;
 }
 .main .avatar img{
 	width: 100%;

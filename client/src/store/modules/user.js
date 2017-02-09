@@ -34,11 +34,13 @@ const actions = {
 	login({ commit, state }, payload){
 		api.login(payload.email,payload.password).then(result => {
 			if(result.data.code == 0 && result.data.user){
-				commit(types.USERS_UPDATE_STATUS, {
+				let commitData = {
 					uid : result.data.user.uid,
 					nickname : result.data.user.nickname,
 					avatar : result.data.user.avatar
-				});
+				}
+				commit(types.USERS_UPDATE_STATUS, commitData);
+				commit(types.COMMENTS_USERS_UPDATE_STATUS, commitData);
 			}
 		});
 	},
@@ -52,11 +54,13 @@ const actions = {
 	getLoginStatus({ commit, state }, payload){
 		api.getLoginStatus().then(result => {
 			if(result.data.code == 0 && result.data.user){
-				commit(types.USERS_UPDATE_STATUS, {
+				let commitData = {
 					uid : result.data.user.uid,
 					nickname : result.data.user.nickname,
 					avatar : result.data.user.avatar
-				});
+				}
+				commit(types.USERS_UPDATE_STATUS, commitData);
+				commit(types.COMMENTS_USERS_UPDATE_STATUS, commitData);
 			}
 		});
 	}

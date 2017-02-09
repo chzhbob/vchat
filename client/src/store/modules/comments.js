@@ -7,7 +7,10 @@ const state = {
 	pageSize: 20,
 	isLoadAll: true,
 	postState: 0, // 0:发送中 1:发送成功 2:发送失败
-	postMsg: '' // 失败信息
+	postMsg: '', // 失败信息
+	uid: null,
+	nickname: '',
+	avatar: ''
 }
 
 const getters = {
@@ -49,6 +52,18 @@ const mutations = {
 	[types.COMMENTS_POST_FAIL](state, payload){
 		state.postState = 2;
 		state.postMsg = payload.msg;
+	},
+
+	[types.COMMENTS_USERS_UPDATE_STATUS](state, payload){
+		if(payload){
+			state.uid = payload.uid;
+			state.nickname = payload.nickname;
+			state.avatar = payload.avatar;
+		}else{
+			state.uid = null;
+			state.nickname = '';
+			state.avatar = '';
+		}
 	}
 }
 
@@ -60,10 +75,14 @@ const actions = {
 	postComment({ commit, state }, payload){
 		api.postComment(payload.topicId, payload.content).then(
 			result => {
+
 				if(result.data.code == 0){
 					commit(types.COMMENTS_POST_SUCCESS, {
 						id : result.data.comment.id,
-						content : payload.content
+						content : payload.content,
+						nickname : state.nickname,
+						avatar : state.avatar,
+						created_at : result.data.comment.created_at
 					});
 				}else{
 					commit(types.COMMENTS_POST_FAIL, {

@@ -11,3 +11,5 @@ export const COMMENTS_POST_FAIL = 'comments/POST/FAIL'
 export const COMMENTS_POST_RESET = 'comments/POST/RESET'
 
 export const USERS_UPDATE_STATUS = 'users/UPDATE/STATUS'
+
+export const COMMENTS_USERS_UPDATE_STATUS = 'comments/users/UPDATE/STATUS'
