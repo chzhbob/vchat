@@ -2,8 +2,10 @@
 	<section class="header">
 		<section class="inner">
 			<ul class="nav">
-				<li>vchat</li>
-				<li><router-link to="/list">热门讨论</router-link></li>
+				<li><router-link to="/home">首页</router-link></li>
+				<li>资料</li>
+				<li>工具</li>
+				<li><router-link to="/list">讨论</router-link></li>
 				<li>关于</li>
 			</ul>
 			<ul class="sign">
