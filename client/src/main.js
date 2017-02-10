@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import App from './App.vue'
 import store from './store'
+import Home from './components/Home.vue'
 import Admin from './components/Admin.vue'
 import Register from './components/Register.vue'
 import Login from './components/Login.vue'
@@ -17,13 +18,15 @@ Vue.use(VueRouter);
 
 
 const routes = [
+	{ path: '/home', component: Home },
 	{ path: '/admin', component: Admin },
 	{ path: '/login', component: Login },
 	{ path: '/register', component: Register },
 	{ path: '/list', component: List },
 	{ path: '/list/page/:page', component: List },
 	{ path: '/post', component: Post },
-	{ path: '/topic/:topicId', component: Topic }
+	{ path: '/topic/:topicId', component: Topic },
+	{ path: '/', redirect: '/home' }
 ]
 
 const router = new VueRouter({
