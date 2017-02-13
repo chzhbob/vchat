@@ -65,4 +65,10 @@ export default {
 	border-color: #ccc;
 	font-weight: bold;
 }
+
+@media screen and (max-width: 900px) {
+	.navi{
+		width: 100%;
+	}
+}
 </style>

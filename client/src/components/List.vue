@@ -70,4 +70,20 @@ export default {
 	font-size: 14px;
 	color: #333;
 }
+
+@media screen and (max-width: 900px) {
+	.wrapper{
+		width: 100%;
+		margin: 10px 0;
+	}
+	.left{
+		float: none;
+		margin: 0 auto;
+		width: 100%;
+		padding: 0 15px;
+	}
+	.right{
+		margin-left: 0px;
+	}
+}
 </style>
