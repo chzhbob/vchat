@@ -1,4 +1,4 @@
-<template>
+ <template>
 	<section class="header">
 		<section class="inner" :class="{open: mobileOpen}">
 			<ul class="nav">
@@ -130,9 +130,6 @@ export default {
 	padding: 5px 10px;
 	margin-top: 15px;
 	margin-right: 15px;
-	position: absolute;
-	top: 60px;
-	left: 20px;
 }
 .search i{
 	font-size: 14px;
@@ -199,6 +196,9 @@ export default {
 
 	.search{
 		float: none;
+		position: absolute;
+		top: 60px;
+		left: 20px;
 	}
 	.sign{
 		float: none;

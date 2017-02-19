@@ -5,7 +5,7 @@ Vue.use(VueResource)
 const api = {}
 export default api;
 
-const domain_url = 'http://192.168.123.1:3000/api/'
+const domain_url = 'http://localhost:3000/api/'
 
 api.getTopics = function(page, ps){
 	return Vue.http.jsonp( domain_url + 'topics/hot', {
