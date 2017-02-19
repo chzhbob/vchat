@@ -76,4 +76,24 @@ export default {
 	text-align: center;
 	text-decoration: none;
 }
+
+@media screen and (max-width: 900px) {
+	.wrapper .input-wrapper{
+		border: 1px solid #ddd;
+		margin-bottom: 10px;
+		width: 100%;
+	}
+	.wrapper a{
+		display: block;
+		height: 36px;
+		line-height: 36px;
+		background: #31db7a;
+		text-align: center;
+		color: white;
+		width: 100%;
+		text-decoration: none;
+		border-radius: 3px;
+		font-size: 14px;
+	}
+}
 </style>

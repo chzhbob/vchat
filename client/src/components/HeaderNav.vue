@@ -49,6 +49,11 @@ export default {
 		nickname : 'nickname',
 		avatar : 'avatar'
 	}),
+	watch: {
+		'$route' : function(to, from) {
+			this.mobileOpen = false;
+		}
+	},
 	methods: {
 		logout: function(){
 			this.$store.dispatch('logout');

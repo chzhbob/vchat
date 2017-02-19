@@ -129,4 +129,10 @@ export default {
 	font-size: 14px;
 	color: #646464;
 }
+
+@media screen and (max-width: 900px) {
+	.right{
+		width: 100%;
+	}
+}
 </style>

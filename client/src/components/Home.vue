@@ -239,4 +239,5 @@
 	background: url(~assets/wood.jpg) repeat-x;
 	background-size: cover;
 }
+
 </style>

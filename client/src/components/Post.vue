@@ -90,4 +90,10 @@ export default {
 	margin: 0 auto;
 	font-size: 14px;
 }
+
+@media screen and (max-width: 900px) {
+	.right{
+		width: 100%;
+	}
+}
 </style>
