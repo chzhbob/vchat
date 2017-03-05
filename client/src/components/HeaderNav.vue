@@ -3,10 +3,10 @@
 		<section class="inner" :class="{open: mobileOpen}">
 			<ul class="nav">
 				<li><router-link to="/home">首页</router-link></li>
-				<li><router-link to="/home">资料</router-link></li>
-				<li><router-link to="/home">工具</router-link></li>
+				<li><router-link to="/download">资料</router-link></li>
+				<li><router-link to="/tools">工具</router-link></li>
 				<li><router-link to="/list">讨论</router-link></li>
-				<li><router-link to="/home">关于</router-link></li>
+				<li><router-link to="/about">关于</router-link></li>
 			</ul>
 			<ul class="sign">
 				<template v-if="!uid">

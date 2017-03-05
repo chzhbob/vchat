@@ -1,4 +1,4 @@
-<template>
+ <template>
 	<section class="wrapper">
 		<section class="left">
 			<router-link class="post" to="/post">发布</router-link>

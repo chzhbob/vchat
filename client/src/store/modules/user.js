@@ -29,10 +29,10 @@ const mutations = {
 
 const actions = {
 	register({ commit, state }, payload){
-		api.register(payload.email,payload.password);
+		return api.register(payload.email,payload.password);
 	},
 	login({ commit, state }, payload){
-		api.login(payload.email,payload.password).then(result => {
+		return api.login(payload.email,payload.password).then(result => new Promise(function(resolve, reject){
 			if(result.data.code == 0 && result.data.user){
 				let commitData = {
 					uid : result.data.user.uid,
@@ -41,18 +41,21 @@ const actions = {
 				}
 				commit(types.USERS_UPDATE_STATUS, commitData);
 				commit(types.COMMENTS_USERS_UPDATE_STATUS, commitData);
+				resolve();
+			}else{
+				reject(result.data.msg);
 			}
-		});
+		}));
 	},
 	logout({ commit, state }, payload){
-		api.logout().then(result => {
+		return api.logout().then(result => {
 			if(result.data.code == 0){
 				commit(types.USERS_UPDATE_STATUS, null);
 			}
 		});
 	},
 	getLoginStatus({ commit, state }, payload){
-		api.getLoginStatus().then(result => {
+		return api.getLoginStatus().then(result => {
 			if(result.data.code == 0 && result.data.user){
 				let commitData = {
 					uid : result.data.user.uid,

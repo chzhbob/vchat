@@ -34,7 +34,14 @@ export default {
     methods: {
         submit: function(){
             if(this.validInput()){
-                this.$store.dispatch('login', {email: this.email, password: this.password});
+                this.$store.dispatch('login', {
+                    email: this.email,
+                    password: this.password
+                }).then(() => {
+                    this.$router.push('/list');
+                }).catch(e => {
+                    alert(e);
+                });
             }
         },
         validInput: function(){

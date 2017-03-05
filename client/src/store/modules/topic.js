@@ -17,11 +17,11 @@ const mutations = {
 
 const actions = {
 	getTopic({ commit, state }, payload){
-		api.getTopic(payload.topicId,payload.page,payload.ps).then(result => commit(types.TOPIC_UPDATE, { topic : result.data.topic }));
+		return api.getTopic(payload.topicId,payload.page,payload.ps).then(result => commit(types.TOPIC_UPDATE, { topic : result.data.topic }));
 	},
 
 	postTopic({ commit, state }, payload){
-		api.postTopic(payload.title, payload.content).then(result => commit(types.TOPIC_POST_BACK, { topic : result.data }));
+		return api.postTopic(payload.title, payload.content).then(result => commit(types.TOPIC_POST_BACK, { topic : result.data }));
 	},
 }
 

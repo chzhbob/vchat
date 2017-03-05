@@ -69,11 +69,11 @@ const mutations = {
 
 const actions = {
 	getComments({ commit, state }, payload){
-		api.getComments(payload.topicId, state.page, state.pageSize).then(result => commit(types.COMMENTS_UPDATE, { items : result.data.comments }));
+		return api.getComments(payload.topicId, state.page, state.pageSize).then(result => commit(types.COMMENTS_UPDATE, { items : result.data.comments }));
 	},
 
 	postComment({ commit, state }, payload){
-		api.postComment(payload.topicId, payload.content).then(
+		return api.postComment(payload.topicId, payload.content).then(
 			result => {
 
 				if(result.data.code == 0){

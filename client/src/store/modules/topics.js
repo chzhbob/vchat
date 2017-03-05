@@ -30,7 +30,7 @@ const mutations = {
 
 const actions = {
 	getHotTopics({ commit, state }, payload){
-		api.getTopics(payload.page, state.pageSize).then(result => 
+		return api.getTopics(payload.page, state.pageSize).then(result => 
 			commit(types.TOPICS_UPDATE, { items : result.data.topics, total : result.data.total, page : payload.page})
 		);	
 	}
